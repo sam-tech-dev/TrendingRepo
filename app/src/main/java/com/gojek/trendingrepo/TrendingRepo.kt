@@ -13,8 +13,6 @@ class TrendingRepo : Application(), HasActivityInjector {
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
-    val name = "Sattar"
-
     companion object {
 
         lateinit var app :TrendingRepo
@@ -37,8 +35,6 @@ class TrendingRepo : Application(), HasActivityInjector {
             .application(this)
             .build()
             .inject(this)
-
-
     }
 
 

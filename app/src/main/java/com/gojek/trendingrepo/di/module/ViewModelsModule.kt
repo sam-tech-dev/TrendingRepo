@@ -3,7 +3,9 @@ package com.gojek.trendingrepo.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gojek.trendingrepo.ViewModelProviderFactory
+import com.gojek.trendingrepo.data.AppDataManager
 import com.gojek.trendingrepo.ui.main.MainViewModel
+import com.gojek.trendingrepo.utils.AppSchedulerProvider
 import dagger.Binds
 import dagger.multibindings.IntoMap
 import dagger.Provides
@@ -32,7 +34,7 @@ class ViewModelsModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    internal fun provideMainViewModel(): ViewModel {
-        return MainViewModel()
+    internal fun provideMainViewModel(appDataManager: AppDataManager, schedulerProvider: AppSchedulerProvider): ViewModel {
+        return MainViewModel(appDataManager,schedulerProvider)
     }
 }

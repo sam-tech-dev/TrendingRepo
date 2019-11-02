@@ -1,4 +1,4 @@
-package com.gojek.trendingrepo.data.network.models
+package com.gojek.trendingrepo.data.models.api
 import com.google.gson.annotations.SerializedName
 
 

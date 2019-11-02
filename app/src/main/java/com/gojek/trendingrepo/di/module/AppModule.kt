@@ -2,6 +2,7 @@ package com.gojek.trendingrepo.di.module
 
 
 import android.content.Context
+import androidx.room.Room
 import com.gojek.trendingrepo.TrendingRepo
 import com.gojek.trendingrepo.di.annotations.ApplicationContext
 import dagger.Module
@@ -12,7 +13,9 @@ import javax.inject.Singleton
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.gojek.trendingrepo.BuildConfig.BASE_URL
-import com.gojek.trendingrepo.data.network.remote.ApiRequests
+import com.gojek.trendingrepo.data.local.db.AppDatabase
+import com.gojek.trendingrepo.data.remote.ApiRequests
+import com.gojek.trendingrepo.utils.AppSchedulerProvider
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -60,10 +63,18 @@ class AppModule {
     }
 
 
+    @Provides
+    @Singleton
+    internal fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(context, AppDatabase::class.java, "TrendingRepoDB")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
 
-  /*  @Provides
-    internal fun provideScheduler(): SchedulerProvider{
+
+    @Provides
+    internal fun provideScheduler(): AppSchedulerProvider{
         return AppSchedulerProvider()
-    }*/
+    }
 
 }

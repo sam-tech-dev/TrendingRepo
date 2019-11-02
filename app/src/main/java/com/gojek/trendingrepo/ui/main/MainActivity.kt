@@ -10,13 +10,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.gojek.trendingrepo.TrendingRepo
 import dagger.android.AndroidInjection
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),MainNavigator {
 
     @Inject
     lateinit var factory: ViewModelProviderFactory
-
-    @Inject
-    lateinit var application: TrendingRepo
 
     lateinit var mainViewModel: MainViewModel
 
@@ -25,9 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("az","name :"+application.name)
-
         mainViewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
+        mainViewModel.navigator = this
 
+        mainViewModel.fetchTrendingRepositories()
+
+    }
+
+
+    override fun handleError(throwable: Throwable) {
+        //
     }
 }
