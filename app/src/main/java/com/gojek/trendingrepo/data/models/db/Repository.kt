@@ -3,7 +3,6 @@ package com.gojek.trendingrepo.data.models.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.gojek.trendingrepo.data.models.api.BuiltBy
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "repositories")
@@ -28,10 +27,10 @@ data class Repository(
     val forks: Int,
 
     @ColumnInfo(name = "language")
-    val language: String,
+    val language: String?,
 
     @ColumnInfo(name = "languageColor")
-    val languageColor: String,
+    val languageColor: String?,
 
     @ColumnInfo(name = "name")
     val name: String,

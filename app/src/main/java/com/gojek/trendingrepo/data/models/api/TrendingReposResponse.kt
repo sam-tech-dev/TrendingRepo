@@ -2,6 +2,7 @@ package com.gojek.trendingrepo.data.models.api
 import com.google.gson.annotations.SerializedName
 
 
+/*
 data class TrendingReposResponse(
     @SerializedName("author")
     val author: String,
@@ -34,4 +35,4 @@ data class BuiltBy(
     val href: String,
     @SerializedName("username")
     val username: String
-)
+)*/

@@ -1,8 +1,6 @@
 package com.gojek.trendingrepo.data
 
 import com.gojek.trendingrepo.data.local.db.AppDbHelper
-import com.gojek.trendingrepo.data.local.db.DbHelper
-import com.gojek.trendingrepo.data.models.api.TrendingReposResponse
 import com.gojek.trendingrepo.data.models.db.Built
 import com.gojek.trendingrepo.data.models.db.Repository
 import com.gojek.trendingrepo.data.remote.AppApiHelper
@@ -34,6 +32,6 @@ class AppDataManager @Inject constructor(
         get() = appDbHelper.allBuilts
 
 
-    override fun getTrendingRepos(): Single<List<TrendingReposResponse>>
+    override fun getTrendingRepos(): Single<List<Repository>>
         = appApiHelper.getTrendingRepos()
 }

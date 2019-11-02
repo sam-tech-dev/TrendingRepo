@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardUseCompatPadding="true"
-    android:animateLayoutChanges="true"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:animateLayoutChanges="true"
-    android:background="@android:color/white"
-    android:layout_height="wrap_content">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.gojek.trendingrepo.ui.main.RepositoryItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardUseCompatPadding="true"
+        android:id="@+id/cv_repository"
+        android:animateLayoutChanges="true"
+        android:layout_height="wrap_content">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:paddingBottom="@dimen/margin_twenty"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civ_avatar"
         android:layout_width="@dimen/avatar_height"
         android:layout_height="@dimen/avatar_height"
+        app:bindImageUrl="@{viewModel.repositoryData.avatar}"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_repo_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +42,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:text="TextView"
+        app:mutableText="@{viewModel.repositoryData.author}"
         android:textColor="@color/normal_text_color"
         android:textSize="@dimen/font_thirteen"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,119 +50,126 @@
         app:layout_constraintStart_toEndOf="@+id/civ_avatar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_repo_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:text="TextView"
-        android:textColor="@color/normal_text_color"
-        android:textSize="@dimen/font_eighteen"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/civ_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/tv_author" />
+          <TextView
+              android:id="@+id/tv_repo_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginEnd="20dp"
+              android:text="TextView"
+              android:textColor="@color/normal_text_color"
+              android:textSize="@dimen/font_eighteen"
+              android:textStyle="bold"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.0"
+              app:layout_constraintStart_toEndOf="@+id/civ_avatar"
+              app:layout_constraintTop_toBottomOf="@+id/tv_author"
+              app:mutableText="@{viewModel.repositoryData.name}" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_twenty"
-        android:layout_marginTop="@dimen/margin_twenty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_repo_name"
-        app:layout_constraintVertical_bias="0.0">
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/cv_repository_extra_details"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.0"
+              app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
+              app:layout_constraintTop_toBottomOf="@+id/tv_repo_name"
+              app:layout_constraintVertical_bias="0.0">
 
 
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="TextView"
-            android:textColor="@color/normal_text_color"
-            android:textSize="@dimen/font_thirteen"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+              <TextView
+                  android:id="@+id/tv_description"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="20dp"
+                  android:text="TextView"
+                  android:textColor="@color/normal_text_color"
+                  android:textSize="@dimen/font_thirteen"
+                  app:layout_constrainedWidth="true"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.0"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:mutableText="@{viewModel.repositoryData.description}" />
 
-        <View
-            android:id="@+id/v_language_color"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/circular_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+              <View
+                  android:id="@+id/v_language_color"
+                  android:layout_width="10dp"
+                  android:layout_height="10dp"
+                  android:layout_marginTop="10dp"
+                  android:background="@drawable/circular_background"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
-        <TextView
-            android:id="@+id/tv_language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_five"
-            android:text="C++"
-            android:textColor="@color/normal_text_color"
-            android:textSize="@dimen/font_thirteen"
-            app:layout_constraintBottom_toBottomOf="@+id/v_language_color"
-            app:layout_constraintStart_toEndOf="@+id/v_language_color"
-            app:layout_constraintTop_toTopOf="@+id/v_language_color" />
+              <TextView
+                  android:id="@+id/tv_language"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="@dimen/margin_five"
+                  android:text="C++"
+                  android:textColor="@color/normal_text_color"
+                  android:textSize="@dimen/font_thirteen"
+                  app:layout_constraintBottom_toBottomOf="@+id/v_language_color"
+                  app:layout_constraintStart_toEndOf="@+id/v_language_color"
+                  app:layout_constraintTop_toTopOf="@+id/v_language_color"
+                  app:mutableText="@{viewModel.repositoryData.language}" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_language"
-            app:layout_constraintStart_toEndOf="@+id/tv_language"
-            app:layout_constraintTop_toTopOf="@+id/tv_language"
-            app:srcCompat="@drawable/star_yellow_16" />
+              <ImageView
+                  android:id="@+id/imageView"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_language"
+                  app:layout_constraintStart_toEndOf="@+id/tv_language"
+                  app:layout_constraintTop_toTopOf="@+id/tv_language"
+                  app:srcCompat="@drawable/star_yellow_16" />
 
-        <TextView
-            android:id="@+id/tv_stars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="4,234"
-            android:textColor="@color/normal_text_color"
-            android:textSize="@dimen/font_thirteen"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+              <TextView
+                  android:id="@+id/tv_stars"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="5dp"
+                  android:text="4,234"
+                  android:textColor="@color/normal_text_color"
+                  android:textSize="@dimen/font_thirteen"
+                  app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                  app:layout_constraintStart_toEndOf="@+id/imageView"
+                  app:layout_constraintTop_toTopOf="@+id/imageView"
+                  app:mutableText="@{viewModel.repositoryData.stars}" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_stars"
-            app:layout_constraintStart_toEndOf="@+id/tv_stars"
-            app:layout_constraintTop_toTopOf="@+id/tv_stars"
-            app:srcCompat="@drawable/fork_black_16" />
+              <ImageView
+                  android:id="@+id/imageView2"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_stars"
+                  app:layout_constraintStart_toEndOf="@+id/tv_stars"
+                  app:layout_constraintTop_toTopOf="@+id/tv_stars"
+                  app:srcCompat="@drawable/fork_black_16" />
 
-        <TextView
-            android:id="@+id/tv_forks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="TextView"
-            android:textColor="@color/normal_text_color"
-            android:textSize="@dimen/font_thirteen"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+              <TextView
+                  android:id="@+id/tv_forks"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="5dp"
+                  android:text="TextView"
+                  android:textColor="@color/normal_text_color"
+                  android:textSize="@dimen/font_thirteen"
+                  app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                  app:layout_constraintStart_toEndOf="@+id/imageView2"
+                  app:layout_constraintTop_toTopOf="@+id/imageView2"
+                  app:mutableText="@{viewModel.repositoryData.forks}" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+          </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+   </androidx.cardview.widget.CardView>
+
+</layout>
