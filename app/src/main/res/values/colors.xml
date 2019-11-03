@@ -5,5 +5,6 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="normal_text_color">#30343E</color>
+    <color name="btn_boundary_color">#7abf8e</color>
 
 </resources>

@@ -1,6 +1,9 @@
 package com.gojek.trendingrepo.utils
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
@@ -72,6 +75,19 @@ fun loadImage(view: CircleImageView, imageUrl: String?) {
     if (parentActivity != null && imageUrl != null) {
         if(imageUrl.isNotEmpty()){
             Glide.with(view.context).load(imageUrl).into(view)
+        }
+    }
+}
+
+
+@BindingAdapter("colorFilter")
+fun setColorFilter(view: ImageView, color: String?) {
+    val parentActivity: AppCompatActivity? = view.getParentActivity()
+    if (parentActivity != null && color != null && color.isNotEmpty()) {
+        try {
+            view.setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_ATOP)
+        }catch (ex:IllegalArgumentException) {
+            ex.printStackTrace()
         }
     }
 }

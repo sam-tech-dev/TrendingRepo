@@ -14,7 +14,7 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
 
     lateinit var context: Context
     lateinit  var listOfRepos:List<Repository>
-     var clickedCardPosition = -1
+    var clickedCardPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context=parent.context

@@ -2,6 +2,7 @@ package com.gojek.trendingrepo.di.module
 
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.gojek.trendingrepo.TrendingRepo
 import com.gojek.trendingrepo.di.annotations.ApplicationContext
@@ -71,6 +72,11 @@ class AppModule {
             .build()
     }
 
+    @Singleton
+    @Provides
+    internal fun provideSharedPrefs(application: TrendingRepo): SharedPreferences {
+        return application.getSharedPreferences("app-prefs", Context.MODE_PRIVATE)
+    }
 
     @Provides
     internal fun provideScheduler(): AppSchedulerProvider{

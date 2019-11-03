@@ -1,6 +1,5 @@
 package com.gojek.trendingrepo.data.local.db
 
-import com.gojek.trendingrepo.data.models.db.Built
 import com.gojek.trendingrepo.data.models.db.Repository
 import io.reactivex.Observable
 
@@ -12,11 +11,7 @@ interface DbHelper {
 
     val allRepositories: Observable<List<Repository>>
 
-    fun insertBuilt(built: Built): Observable<Boolean>
-
-    fun insertBuiltList(builts: List<Built>): Observable<Boolean>
-
-    val allBuilts: Observable<List<Built>>
+    fun clearRepositories(): Observable<Boolean>
 
 
 }

@@ -4,4 +4,6 @@ interface MainNavigator {
 
     fun handleError(throwable: Throwable)
 
+    fun stopRefreshing()
+
 }
