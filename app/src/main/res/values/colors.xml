@@ -3,8 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-
     <color name="normal_text_color">#30343E</color>
-    <color name="btn_boundary_color">#7abf8e</color>
+    <color name="btn_boundary_color">#31b057</color>
+    <color name="color_some_thing_wrong">#4a4a4a</color>
+    <color name="color_blocking_signal">#929292</color>
+    <color name="color_repo_author">#52575c</color>
+    <color name="color_toolbar_text">#52282b</color>
 
 </resources>

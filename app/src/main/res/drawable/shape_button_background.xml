@@ -4,7 +4,7 @@
     <solid android:color="@android:color/white"/>
     <stroke
         android:color="@color/btn_boundary_color"
-        android:width="2dp"
+        android:width="1dp"
         />
-    <corners android:radius="@dimen/margin_eight"/>
+    <corners android:radius="@dimen/margin_four"/>
 </shape>

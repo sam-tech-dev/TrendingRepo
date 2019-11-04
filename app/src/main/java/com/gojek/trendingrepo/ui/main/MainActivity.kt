@@ -1,6 +1,8 @@
 package com.gojek.trendingrepo.ui.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -24,14 +26,14 @@ class MainActivity : AppCompatActivity(),MainNavigator,View.OnClickListener {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
-        setSupportActionBar(toolbar_top)
-
         mainViewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
         mainViewModel.navigator = this
 
-
         val mViewDataBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mViewDataBinding.viewModel= mainViewModel
+
+        setSupportActionBar(toolbar_top)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
 
         mainViewModel.setDataToView()
 
@@ -45,6 +47,30 @@ class MainActivity : AppCompatActivity(),MainNavigator,View.OnClickListener {
         sfl_repos?.setOnRefreshListener({
             mainViewModel.fetchTrendingRepositories()
         })
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+          super.onCreateOptionsMenu(menu)
+           menuInflater.inflate(R.menu.main_menu, menu)
+            return  true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item?.itemId){
+
+            R.id.menu_sort_by_stars->{
+              mainViewModel.sortRepositoriesByStars()
+            }
+
+            R.id.menu_sort_by_name->{
+              mainViewModel.sortRepositoriesByName()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {

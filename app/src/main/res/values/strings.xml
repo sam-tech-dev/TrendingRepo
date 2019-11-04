@@ -3,4 +3,8 @@
     <string name="str_went_wrong">Something went wrong..</string>
     <string name="str_alien_blocking_signal">An alien is probably blocking your signal</string>
     <string name="str_retry">Retry</string>
+
+    <string name="str_sort_by_stars">Sort by stars</string>
+    <string name="str_sort_by_name">Sort by name</string>
+
 </resources>

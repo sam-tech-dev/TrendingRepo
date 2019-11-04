@@ -60,6 +60,7 @@ class MainViewModel constructor( val appDataManager: AppDataManager, val schedul
                 }))
     }
 
+    /*this function will clear already stored data first then re-insert the new list of repositories*/
     fun insertReposintoDatabase(repoList: List<Repository>){
         compositeDisposable.add(
             appDataManager.insertRepositories(repoList)
@@ -76,9 +77,19 @@ class MainViewModel constructor( val appDataManager: AppDataManager, val schedul
     }
 
 
-    fun check2HrCacheExpired(): Boolean{
+    private fun check2HrCacheExpired(): Boolean{
         val millies2hr= 1000*60*60*2
         return  (System.currentTimeMillis()-appDataManager.getDbRefreshTimeMillis())>millies2hr
     }
 
+
+    fun sortRepositoriesByName(){
+        val listOfRepos=  repositoryAdapter.listOfRepos.sortedWith(compareBy({it.name}))
+        repositoryAdapter.updateRepoList(listOfRepos)
+    }
+
+    fun sortRepositoriesByStars(){
+        val listOfRepos=  repositoryAdapter.listOfRepos.sortedWith(compareBy({it.stars}))
+        repositoryAdapter.updateRepoList(listOfRepos)
+    }
 }

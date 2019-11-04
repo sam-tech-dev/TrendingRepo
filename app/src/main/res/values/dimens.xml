@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="avatar_height">50dp</dimen>
+    <dimen name="avatar_height">32dp</dimen>
 
     <dimen name="font_twelve">12sp</dimen>
     <dimen name="font_thirteen">13sp</dimen>
@@ -12,6 +12,7 @@
     <dimen name="font_eighteen">18sp</dimen>
     <dimen name="font_nineteen">19sp</dimen>
     <dimen name="font_twenty">20sp</dimen>
+    <dimen name="font_twentyone">21sp</dimen>
     <dimen name="font_twentytwo">22sp</dimen>
 
 
@@ -35,6 +36,7 @@
     <dimen name="margin_eighteen">18dp</dimen>
     <dimen name="margin_twenty">20dp</dimen>
     <dimen name="margin_twentythree">23dp</dimen>
+    <dimen name="margin_twentyfour">24dp</dimen>
     <dimen name="margin_twentyfive">25dp</dimen>
 
 </resources>
